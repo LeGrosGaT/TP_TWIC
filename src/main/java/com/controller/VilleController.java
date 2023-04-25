@@ -1,11 +1,9 @@
 package com.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +24,7 @@ public class VilleController {
 	@ResponseBody
 	public List<Ville> get(@RequestParam(required = false, value="code") String code) {
 		
-		System.out.println("get : " + code);
-		
-		List<Ville> listeVille = villeBLOService.getInfoVilles(code);
-		return listeVille;
+		return villeBLOService.getInfoVilles(code);
 	}
 	
 	@RequestMapping(value="/ville/ajoute", method=RequestMethod.POST)
@@ -42,8 +37,7 @@ public class VilleController {
 						@RequestParam(required = true, value="latitude") String latitude,
 						@RequestParam(required = true, value="longitude") String longitude) {
 		
-	    Ville ville = villeBLOService.createVille(code, nom, postal, libelle, ligne, latitude, longitude);
-	    return ville;
+	    return villeBLOService.createVille(code, nom, postal, libelle, ligne, latitude, longitude);
 	}
 	
 	@RequestMapping(value="/ville/modifier", method=RequestMethod.PUT)
@@ -57,16 +51,14 @@ public class VilleController {
 						@RequestParam(required = false, value="latitude") String latitude,
 						@RequestParam(required = false, value="longitude") String longitude) {
 		
-	    Ville ville = villeBLOService.modifyVille(code, nom, postal, libelle, ligne, latitude, longitude);
-	    return ville;
+	    return villeBLOService.modifyVille(code, nom, postal, libelle, ligne, latitude, longitude);
 	}
 	
 	@RequestMapping(value="/ville/retire", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Ville delete(@RequestParam(required = true, value="code") String code) {
 		
-	    Ville ville = villeBLOService.deleteVille(code);
-	    return ville;
+	    return villeBLOService.deleteVille(code);
 	}
 	
 	@RequestMapping(value="/ville/distance", method=RequestMethod.GET)
@@ -74,7 +66,6 @@ public class VilleController {
 	public double distance(@RequestParam(required = true, value="ville1") String ville1,
 						@RequestParam(required = true, value="ville2") String ville2) {
 		
-		double distance = villeBLOService.distanceVille(ville1, ville2);
-	    return distance;
+		return villeBLOService.distanceVille(ville1, ville2);
 	}
 }

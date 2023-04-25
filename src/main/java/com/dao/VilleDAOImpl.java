@@ -18,7 +18,7 @@ public class VilleDAOImpl implements VilleDAO{
 
 	public ArrayList<Ville> findAllVilles(){
 
-		ArrayList<Ville> listVille = new ArrayList<Ville>();
+		ArrayList<Ville> listVille = new ArrayList<>();
 
 		try (
 				Connection connection = factoryDAO.getConnection();
@@ -35,20 +35,15 @@ public class VilleDAOImpl implements VilleDAO{
 				ville.setCoordonnee(new Coordonnee(resultSet.getDouble("Latitude"), resultSet.getDouble("Longitude")));
 				listVille.add(ville);
 			}
-
-			statement.close();
-			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("findAllVilles");
 		return listVille;
 	}
 	
 	public ArrayList<Ville> findVille(String code){
 
-		ArrayList<Ville> listVille = new ArrayList<Ville>();
+		ArrayList<Ville> listVille = new ArrayList<>();
 
 		try (
 				Connection connection = factoryDAO.getConnection();
@@ -65,14 +60,9 @@ public class VilleDAOImpl implements VilleDAO{
 				ville.setCoordonnee(new Coordonnee(resultSet.getDouble("Latitude"), resultSet.getDouble("Longitude")));
 				listVille.add(ville);
 			}
-
-			statement.close();
-			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("findAllVilles");
 		return listVille;
 	}
 	
@@ -96,9 +86,6 @@ public class VilleDAOImpl implements VilleDAO{
 	        if (rowsAffected > 0) {
 	            success = true;
 	        }
-
-	        statement.close();
-	        connection.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -126,9 +113,6 @@ public class VilleDAOImpl implements VilleDAO{
 	        if (rowsAffected > 0) {
 	            success = true;
 	        }
-
-	        statement.close();
-	        connection.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -150,9 +134,6 @@ public class VilleDAOImpl implements VilleDAO{
 	        if (rowsAffected > 0) {
 	            success = true;
 	        }
-
-	        statement.close();
-	        connection.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }

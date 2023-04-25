@@ -17,17 +17,14 @@ public class FactoryDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-
+			e.getException();
 		}
 
-		FactoryDAO instance = new FactoryDAO("jdbc:mysql://localhost:3306/bddr_cours", "root", "network");
-
-		return instance;
+		return new FactoryDAO("jdbc:mysql://localhost:3306/bddr_cours", "root", "network");
     }
 	
 	public Connection getConnection() throws SQLException {
-		Connection connexion = DriverManager.getConnection(url, username, password);
-		return connexion;
+		return DriverManager.getConnection(url, username, password);
 	}
 
 }
