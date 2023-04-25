@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,11 +24,11 @@ public class VilleController {
 	@RequestMapping(value="/ville/chercher", method=RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:8080")
 	@ResponseBody
-	public ArrayList<Ville> get(@RequestParam(required = false, value="code") String code) {
+	public List<Ville> get(@RequestParam(required = false, value="code") String code) {
 		
 		System.out.println("get : " + code);
 		
-		ArrayList<Ville> listeVille = villeBLOService.getInfoVilles(code);
+		List<Ville> listeVille = villeBLOService.getInfoVilles(code);
 		return listeVille;
 	}
 	

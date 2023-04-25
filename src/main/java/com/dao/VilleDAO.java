@@ -1,13 +1,13 @@
 package com.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.dto.Ville;
 
 public interface VilleDAO {
-	public ArrayList<Ville> findAllVilles();
+	public List<Ville> findAllVilles();
 
-	public ArrayList<Ville> findVille(String codeCommune);
+	public List<Ville> findVille(String codeCommune);
 	
 	public boolean updateVille(Ville ville);
 	

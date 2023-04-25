@@ -1,6 +1,7 @@
 package com.blo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class VilleBLOImpl implements VilleBLO {
 	private VilleDAO villeDAO; 
 
 	public ArrayList<Ville> getInfoVilles(String code) {
-		ArrayList<Ville> listVille = new ArrayList<Ville>();
+		List<Ville> listVille;
 
 		if(code == null) {
 			listVille = villeDAO.findAllVilles();
@@ -24,8 +25,8 @@ public class VilleBLOImpl implements VilleBLO {
 			listVille = villeDAO.findVille(code);
 		}
 
-		return listVille;
-	}
+		return (ArrayList<Ville>) listVille;
+	}	
 
 	public Ville createVille( 	 String codeCommune,
 			String nomCommune,
@@ -34,7 +35,7 @@ public class VilleBLOImpl implements VilleBLO {
 			String ligne,
 			String latitude,
 			String longitude) {
-		if(getInfoVilles(codeCommune).size() == 0) {
+		if(getInfoVilles(codeCommune).isEmpty()) {
 			Ville ville = new Ville();
 			ville.setCodeCommune(codeCommune);
 			ville.setNomCommune(nomCommune);
@@ -94,7 +95,6 @@ public class VilleBLOImpl implements VilleBLO {
 		if(getInfoVilles(code).size() == 1) {
 			Ville ville = getInfoVilles(code).get(0);
 			villeDAO.deleteVille(code);
-			System.out.println(code + " supprimé");
 			return ville;
 		}
 		return null;
