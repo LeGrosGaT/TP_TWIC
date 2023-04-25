@@ -3,6 +3,7 @@ package com.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,7 @@ public class TestController {
 	@Autowired
 	VilleBLO villeBLOService;
 	
-	@RequestMapping(value="/ville", method=RequestMethod.GET)
+	@RequestMapping(value="/tests", method=RequestMethod.GET)
 	@ResponseBody
 	public ArrayList<Ville> get(@RequestParam(required = false, value="codePostal") String codePostal) {
 		
@@ -26,5 +27,12 @@ public class TestController {
 		
 		ArrayList<Ville> listeVille = villeBLOService.getInfoVilles(codePostal);
 		return listeVille;
+	}
+	
+	@RequestMapping(value="/test", method=RequestMethod.POST)
+	@ResponseBody
+	public Ville create(@RequestBody Ville ville) {
+	    //villeBLOService.createVille(ville);
+	    return ville;
 	}
 }

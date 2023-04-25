@@ -7,6 +7,7 @@ public class Ville {
 	private String codePostal;
 	private String libelleAcheminement;	
 	private String ligne;
+	private Coordonnee coordonnee;
 	
 	public String getCodeCommune() {
 		return codeCommune;
@@ -37,6 +38,12 @@ public class Ville {
 	}
 	public void setLigne(String ligne) {
 		this.ligne = ligne;
+	}
+	public Coordonnee getCoordonnee() {
+		return coordonnee;
+	}
+	public void setCoordonnee(Coordonnee coordonnee) {
+		this.coordonnee = coordonnee;
 	}
 		
 
